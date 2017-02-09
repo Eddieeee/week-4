@@ -30,13 +30,29 @@
          return 1;
        }
        var one = justOne();
+
+
 ===================== */
+var phillySolarInstallationDataUrl = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/json/philadelphia-solar-installations.json";
 
 // We set this to HTTP to prevent 'CORS' issues
-var downloadData = $.ajax("http://");
-var parseData = function() {};
-var makeMarkers = function() {};
-var plotMarkers = function() {};
+var downloadData = $.ajax(phillySolarInstallationDataUrl);
+ var parseData = function(data) {
+     return JSON.parse(data);
+ };
+
+ var makeMarkers = function(a) {
+    var m = _.map(a, function(aa){
+      return L.marker([aa.Y, aa.X]);
+    });
+  return m;
+ };
+
+var plotMarkers = function(markers) {
+       _.each(markers,function(m){
+         m.addTo(map);
+       });
+ };
 
 
 /* =====================
@@ -52,7 +68,11 @@ var plotMarkers = function() {};
   user's input.
 ===================== */
 
-var removeMarkers = function() {};
+var removeMarkers = function(markers) {
+      _.each(markers,function(mk){
+        map.removeLayer(mk);
+      });
+};
 
 /* =====================
   Optional, stretch goal
@@ -83,8 +103,12 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 ===================== */
 
 downloadData.done(function(data) {
+  console.log(1);
   var parsed = parseData(data);
+  console.log(2);
   var markers = makeMarkers(parsed);
+  console.log(3);
   plotMarkers(markers);
-  removeMarkers(markers);
+  console.log(4);
+  //removeMarkers(markers);
 });

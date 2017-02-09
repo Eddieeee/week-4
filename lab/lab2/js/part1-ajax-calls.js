@@ -19,7 +19,9 @@
   This recipe, can be used by underscore's _.filter. It will return only words with
    >=5 characters.
 ===================== */
-var isLengthOfFiveOrMore = function(str) {};
+var isLengthOfFiveOrMore = function(str) {
+  return str.length >= 5;
+};
 
 console.log("isLengthOfFiveOrMore success:",
   _.isEqual(_.filter(['this', 'is','a', 'test', 'testing'], isLengthOfFiveOrMore), ['testing']));
@@ -30,15 +32,23 @@ console.log("isLengthOfFiveOrMore success:",
   function you write along with underscore's _.each to log the double of every
   number in the provided array.
 ===================== */
+// var logDouble = function(num) {
+//    return _.map(num, function(mm){
+//     return mm * 2;
+//   });
+// };
+// var theArray = [1, 5, 20, 100];
+// console.log(logDouble(theArray));
+
 var logDouble = function(num) {};
 var theArray = [1, 5, 20, 100];
-
+_.each(theArray,function(num){console.log(num*2)});
 
 /* =====================
   Given this already defined function, define fizzbuzzArray so that, when mapped
   over, it will equal ['fizz', 'buzz', 'fizzbuzz'];
 ===================== */
-var fizzbuzzArray = [];
+var fizzbuzzArray = [3,5,15];
 var fizzbuzzFunc = function(num) {
   var str = '';
   if (num % 3 === 0) { str = 'fizz'; }
@@ -103,7 +113,19 @@ var phillyBikeCrashesDataUrl = "https://raw.githubusercontent.com/CPLN692-MUSA61
   Remember to call all code within the function body. Use console.log to make sure
   that this step is completed before moving on!
 ===================== */
+var computedValue;
 
+$.ajax(phillySolarInstallationDataUrl).done(function(ajaxResponseValue) {
+  // a function that does some kind of transformation on the response
+  var computedValue = JSON.parse(ajaxResponseValue);
+  // Logging our computed result (within the body of the ajax function)
+  console.log(computedValue);
+  _.each(computedValue,function(computed){
+        L.marker([computed.Y, computed.X])
+        .bindPopup(computed.NAME)
+        .addTo(map);
+  });
+});
 
 /* =====================
   Now that you've properly parsed your data, use _.each to plot the

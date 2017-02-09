@@ -1,6 +1,69 @@
 /* =================
 Add more styles here!
 ================= */
+#header {
+	height: 140px;
+	width: 280px;
+	background-color: #e1d7d8;
+	margin:0px 0px 5px 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#uni{
+  height: 2px;
+  width: 280px;
+  background-color: #e1d7d8;
+  margin-top: 5PX;
+}
+
+#bracket{
+  border:1px solid #e4c4b8;
+  width: 75px;
+  font-weight: bold;
+
+}
+
+div1 p{
+    font-family: cursive;
+    }
+
+p{
+    font-family: Garamond;
+        }
+
+#title {
+	display: inline;
+	position: relative;
+  margin-right: 100px;
+}
+
+#title1 {
+	display: inline;
+	position: fixed;
+  border:1px solid #e4c4b8;
+  font-size: 1em;
+	background-color: #E4DEE7;
+}
+.h1 {
+	height: 1px;
+	margin:20px 0px 15px 5px;
+  font-family: Tahoma;
+  font-size: 1em;
+
+}
+
+.h2 {
+  height: 1px;
+	margin:20px 0px 30px 5px;
+  color: #555f60;
+
+}
+#h3 {
+  height: 1px;
+	margin:20px 0px 30px 5px;
+  color: #79c2be;
+}
 
 body {
     padding: 0;
